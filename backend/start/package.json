@@ -14,7 +14,7 @@
   "dependencies": {
     "adaro": "1.0.2",
     "express": "4.13.4",
-    "lodash": "4.3.0",
+    "lodash": "4.17.15",
     "unirest": "0.4.2"
   },
   "engines": {
