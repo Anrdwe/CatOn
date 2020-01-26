@@ -15,6 +15,7 @@
     "@google-cloud/vision": "^1.8.0",
     "adaro": "1.0.2",
     "camera-capture": "0.0.11",
+    "canvas": "^2.6.1",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0",
