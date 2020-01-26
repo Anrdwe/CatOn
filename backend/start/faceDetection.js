@@ -13,9 +13,6 @@ async function detectFaces(inputFile) {
   const request = {image: {source: {filename: inputFile}}};
   const results = await client.faceDetection(request);
   const faces = results[0].faceAnnotations;
-  if (faces.length > 0) {
-    console.log(`Detect a face.`);
-  }
   return faces;
 }
 
@@ -53,9 +50,9 @@ async function highlightFaces(inputFile, face) {
 }
 
 async function main() {
-  var counter = 1;
+  var sleep = require('sleep');
+  let filePath = './resources/face.jpg';
   while (true) {
-    let filePath = './resources/face' + counter++ + '.jpg';
     // Take a photo using webcom
     await c.initialize();
     let f = await c.readFrame('image/jpeg');
@@ -63,8 +60,11 @@ async function main() {
     // Crop out the polygon around any face detected in the photo above
     const faces = await detectFaces(filePath);
     if (faces !== undefined && faces.length > 0) {
+      console.log(`Detect a face.`);
       await highlightFaces(filePath, faces[0]);
     }
+    // Sleep for 1 second
+    sleep.sleep(1);
   }
 }
 
