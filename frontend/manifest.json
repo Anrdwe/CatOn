@@ -8,7 +8,7 @@
         "default_title": "cat"
     },
     "permissions": [
-        "notifications","storage", "alarms"
+        "notifications","storage", "alarms", "tabs"
     ],
     "optional_permissions": [
         "https://image.shutterstock.com/*",

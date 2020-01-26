@@ -82,14 +82,22 @@ document.getElementById("setButton").addEventListener("click", function(){
 
 document.getElementById("test1").addEventListener("click", function(){
     chrome.notifications.clear('Dose of cuteness');
-        chrome.notifications.create('Dose of cuteness', {
-            type: 'image',
-            iconUrl: 'CatOn_icon2.png', // Replace with your own image
-            // Customize either the notification title or message
-            title: 'Dose of cuteness',
-            message: "It's time for some cuteness!",
-            imageUrl: "cat500x250.jpg"
+    chrome.storage.local.clear(function() {
+        var error = chrome.runtime.lastError;
+        if (error) {
+            console.error(error);
+        }
+    });
+    getImage();
+    chrome.notifications.create('Dose of cuteness', {
+        type: 'image',
+        iconUrl: 'CatOn_icon2.png', // Replace with your own image
+        // Customize either the notification title or message
+        title: 'Dose of cuteness',
+        message: "It's time for some cuteness!",
+        imageUrl: "randomAnimal.jpg"
     })
+        
 });
 document.getElementById("test2").addEventListener("click", function(){
     chrome.notifications.clear('Blink Reminder');
@@ -122,3 +130,7 @@ document.getElementById("test4").addEventListener("click", function(){
     message: 'Stretch your arms and touch your toes.'
     })
 });
+
+chrome.notifications.onClicked.addListener(function() {
+    chrome.tabs.create({url: 'randomAnimal.jpg'})
+})
