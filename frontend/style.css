@@ -1,4 +1,38 @@
+body{
+    background-color: #fafafa;
+    font-family: "Roboto", sans-serif;
+}
+
 .overall{
     height: 300px;
-    width: 200px;
+    width: 400px;
+}
+
+.animal-option{
+    padding: 20px 20px 20px;
+}
+.eye-option{
+    padding: 10px 20px 20px;
+}
+.exercise-option{
+    padding: 10px 20px 20px;
+}
+.stretch-option{
+    padding: 10px 20px 20px;
+}
+
+.titles{
+    font-size: 20px;
+}
+
+.catCare{
+    margin: auto;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+
+}
+h2{
+    display: inline-block;
+    vertical-align: middle;
 }

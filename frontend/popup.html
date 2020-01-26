@@ -2,53 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <!--Import Google Icon Font-->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!--Import materialize.css-->
-     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>CatOn</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="overall">
-        <div class="titles">Animal Intervention</div>
-        <form action="#">
-            <p class="range-field">
-                <input type="range" id="test5" min="0" max="100" />
-            </p>
-        </form>   
-    
-        <div class="titles">Eye Exercise</div>
-        <form action="#">
-            <p class="range-field">
-                <input type="range" id="test5" min="0" max="100" />
-            </p>
-        </form> 
+        <div class="animal-option">
+            <h2 class="titles">Animal Intervention: </h2>
+            <h2 class="values" id="animal_value">asd</h2>
+            <div id="slider-animal"></div>
+        </div>
 
-        <div class="titles">Physical Exercise</div>
-        <form action="#">
-            <p class="range-field">
-            <input type="range" id="test5" min="0" max="100" />
-            </p>
-        </form> 
+        <div class="eye-option">
+            <h2 class="titles">Eye exercise: </h2>  
+            <h2 class="values" id="eye_value"></h2>
+            <div id="slider-eye"></div>  
+        </div>
 
-        <div class="titles">Stretch Exercise</div>
-        <form action="#">
-            <p class="range-field">
-            <input type="range" id="test5" min="0" max="100" />
-            </p>
-        </form> 
+        <div class="exercise-option">
+            <h2 class="titles">Physical exercise: </h2>
+            <h2 class="values" id="exercise_value"></h2>
+            <div id="slider-exercise"></div>
+        </div>
 
-        <a class="waves-effect waves-light btn-small">CatCare</a>
+        <div class="stretch-option">
+            <h2 class="titles">Stretch: </h2>  
+            <h2 class="values" id="stretch_value"></h2>
+            <div id="slider-stretch"></div> 
+        </div>
     </div>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="global.js" charset="utf-8"></script>
     <script src="popup.js" charset="utf-8"></script>
-
-
 </body>
 </html>
