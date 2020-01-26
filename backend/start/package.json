@@ -1,0 +1,31 @@
+{
+  "name": "cloudvision-nodejs",
+  "version": "1.0.0",
+  "description": "NodeJS application to consume Cloud Vision API",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zarmada/cloudvision-nodejs"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@google-cloud/vision": "^1.8.0",
+    "adaro": "1.0.2",
+    "camera-capture": "0.0.11",
+    "canvas": "^2.6.1",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "puppeteer": "^2.0.0",
+    "sleep": "^6.1.0",
+    "unirest": "^0.6.0"
+  },
+  "engines": {
+    "node": ">=0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
