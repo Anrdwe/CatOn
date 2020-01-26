@@ -24,17 +24,30 @@ app.use(cors);
 
 var imageData;
 
+const fs = require('fs');
+const request = require('request');
+
 app.get("/image", (req, res, next) => {
     imagesApi.searchImages(animalqueryParams)
         .then(({ data }) => {
             imageData = data;
             console.log(JSON.stringify(data));
+            var download = function(uri, filename, callback){
+              request.head(uri, function(err, res, body){    
+                request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+              });
+            };
+            download(`${imageData[0].assets.preview.url}`, '../frontend/randomAnimal.jpg', function(){
+              console.log('done');
+            });
             res.json(imageData[0].assets.preview);
     })
     .catch((error) => {
         console.error(error);
     });
 });
+
+
 
 app.listen(3000, () => {
  console.log("Server running on port 3000");
