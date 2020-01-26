@@ -12,7 +12,8 @@ function getSliderText(value) {
 	return value + ' minutes';
 }
 
-var updateAnimalText = function(value) { $("#animal_value").html(value);};
+var updateAnimalText = function(value) { 
+    $("#animal_value").html(value);};
 var updateEyeText = function(value) { $("#eye_value").html(value);};
 var updateExerciseText = function(value) { $("#exercise_value").html(value);};
 var updateStretchText = function(value) { $("#stretch_value").html(value);};
@@ -33,18 +34,19 @@ var storeUserPrefs = function() {
 };
 //UI handlers
 
+//alarm
+
 //execute code, assign handlers
 $(function() {
     chrome.storage.sync.get('healthyBrowsingSettings', function (storagePrefs) {
         prefs = buildPrefsFromStorage(storagePrefs);
-        
         updateAnimalText(getSliderText(prefs.animalValue));
         updateEyeText(getSliderText(prefs.eyeValue));
         updateExerciseText(getSliderText(prefs.exerciseValue));
         updateStretchText(getSliderText(prefs.stretchValue));
         
         var sliderOptions = {
-            step: 5,
+            step: 1,
             min: 0,
             max: 120,
             value: 30

@@ -36,3 +36,15 @@ h2{
     display: inline-block;
     vertical-align: middle;
 }
+
+.setArea{
+    text-align: center;
+}
+
+#setButton{
+    font-size: 30px;
+}
+
+#setText{
+    font-size: 40px;
+}

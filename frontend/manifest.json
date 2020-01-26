@@ -8,7 +8,7 @@
         "default_title": "cat"
     },
     "permissions": [
-        "notifications","storage"
+        "notifications","storage", "alarms"
     ],
     "background": {
         "scripts": ["global.js", "background.js"]
