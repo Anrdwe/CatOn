@@ -20,7 +20,8 @@
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0",
     "sleep": "^6.1.0",
-    "unirest": "^0.6.0"
+    "unirest": "^0.6.0",
+    "websocket": "^1.0.31"
   },
   "engines": {
     "node": ">=0.12.7"
