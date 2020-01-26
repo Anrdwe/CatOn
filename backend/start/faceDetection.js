@@ -3,6 +3,7 @@
 const vision = require('@google-cloud/vision');
 const fs = require('fs');
 const webcam = require('camera-capture');
+const {PredictionServiceClient} = require(`@google-cloud/automl`).v1;
 
 const c = new webcam.VideoCapture({mime: 'image/png'});
 const client = new vision.ImageAnnotatorClient();
@@ -17,7 +18,7 @@ async function detectFaces(inputFile) {
 }
 
 // Crop a polygon around the face, then saves to local.
-async function highlightFaces(inputFile, face) {
+async function cropFaceAndPredict(inputFile, face) {
   const Canvas = require('canvas');
   const {promisify} = require('util');
   const readFile = promisify(fs.readFile);
@@ -37,16 +38,48 @@ async function highlightFaces(inputFile, face) {
   context.drawImage(img, origX, origY, width, height, 0, 0, width, height);
 
   // Write the result to a file
-  console.log(`Cropped the face in ${inputFile}`);
-  const writeStream = fs.createWriteStream(inputFile);
-  const pngStream = canvas.pngStream();
+  var buf = canvas.toBuffer();
+  fs.writeFileSync(inputFile, buf);
+}
 
-  await new Promise((resolve, reject) => {
-    pngStream
-      .on('data', chunk => writeStream.write(chunk))
-      .on('error', reject)
-      .on('end', resolve);
-  });
+async function predictEmotion (inputFile) {
+  /**
+   * TODO(developer): Uncomment these variables before running the sample.
+  */
+  const projectId = 'caton-266221';
+  const location = 'us-central1';
+  const modelId = 'ICN9155620130351218688';
+
+  // Instantiates a client
+  const client = new PredictionServiceClient();
+
+  // Read the file content for translation.
+  const content = fs.readFileSync(inputFile);
+
+  async function predict() {
+    // Construct request
+    // params is additional domain-specific parameters.
+    // score_threshold is used to filter the result
+    const request = {
+      name: client.modelPath(projectId, location, modelId),
+      payload: {
+        image: {
+          imageBytes: content,
+        },
+      },
+    };
+
+    const [response] = await client.predict(request);
+
+    for (const annotationPayload of response.payload) {
+      console.log(`Predicted class name: ${annotationPayload.displayName}`);
+      console.log(
+        `Predicted class score: ${annotationPayload. classification.score}`
+      );
+    }
+  }
+
+  predict();
 }
 
 async function main() {
@@ -60,10 +93,10 @@ async function main() {
     // Crop out the polygon around any face detected in the photo above
     const faces = await detectFaces(filePath);
     if (faces !== undefined && faces.length > 0) {
-      console.log(`Detect a face.`);
-      await highlightFaces(filePath, faces[0]);
+      console.log(`Detected a face.`);
+      await cropFaceAndPredict(filePath, faces[0]);
+      await predictEmotion(filePath);
     }
-    // Sleep for 1 second
     sleep.sleep(1);
   }
 }

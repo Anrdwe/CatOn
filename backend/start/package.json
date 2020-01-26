@@ -12,6 +12,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@google-cloud/automl": "^1.10.0",
     "@google-cloud/vision": "^1.8.0",
     "adaro": "1.0.2",
     "camera-capture": "0.0.11",
