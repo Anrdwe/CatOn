@@ -16,7 +16,7 @@
     "cookie-session": "1.2.0",
     "express": "4.13.4",
     "gcloud": "0.27.0",
-    "googleapis": "2.1.7",
+    "googleapis": "59.0.0",
     "lodash": "4.3.0",
     "multer": "1.1.0",
     "unirest": "0.4.2"
